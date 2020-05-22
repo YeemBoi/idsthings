@@ -1,8 +1,27 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <title>Tracken - Your IDS Tracker</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+        <link rel="stylesheet" href="{% static 'tracken/style.css' %}">
+        <link rel="stylesheet" href="{% static 'tracken/font-awesome.min.css' %}">
     </head>
+    <header>
+        <div class="topnav" id="myTopnav">
+            <a href="#home" class="active">Home</a>
+            <a href="#news">News</a>
+            <a href="#contact">Contact</a>
+            <a href="#about">About</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+              <i class="fa fa-bars"></i>
+            </a>
+        </div>
+        <h1>
+            Tracken
+        </h1>
+        <h2>
+            Your IDS Tracker
+        </h2>
+    </header>
 </html>

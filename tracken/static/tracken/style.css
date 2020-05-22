@@ -1,29 +1,99 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;1,500;1,600&display=swap');
 
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;1,500;1,600&display=swap');
 body {
-    font-family: 'Raleway', sans-serif;
-    background-color: #21252B;
-    color: #f5f2d0;
+  font-family: 'Raleway', sans-serif;
+  background-color: #21252B;
+  margin: 0;
+  color: #f5f2d0;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.topnav .icon {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child) {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .topnav.responsive {
+    position: relative;
+  }
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+
+header {
+  text-align: center;
 }
 
 h1 {
-    font-weight: 700;
-    font-size: 200px;
+  font-weight: 700;
+  font-size: 75px;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 50px;
 }
 
 a {
-    text-decoration: none;
-    transition: font-weight 1s;
+  text-decoration: none;
+  transition: font-weight 1s;
 }
+
 a:hover {
-    font-style: italic;
-    color: white;
+  font-style: italic;
+  color: white;
 }
+
 button {
-    border-radius: 50px;
-    background-color: #2F343F;
-    transition: background-color 1s;
+  border-radius: 50px;
+  background-color: #2F343F;
+  transition: background-color 1s;
 }
+
 button:hover {
-    background-color: #7b869d;
+  background-color: #7b869d;
 }
+
