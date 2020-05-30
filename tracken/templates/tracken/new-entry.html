@@ -1,0 +1,14 @@
+{% extends 'tracken/base.html' %}
+{% block title %}New Entry{% endblock %}
+{% block header %}
+<h2>Log a new entry</h2>
+{% endblock %}
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div>
+        <button type="submit">Log entry!</button>
+    </div>
+</form>
+{% endblock %}

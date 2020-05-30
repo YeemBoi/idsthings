@@ -1,0 +1,24 @@
+{% extends 'tracken/base.html' %}
+{% block title %}Log Entry{% endblock %}
+{% block header %}
+<h1>Entry logged</h1>
+{% endblock %}
+{% block content %}
+<table>
+    <tr>
+        <td>Goal:</td>
+        <td>{{ entry.goal }}</td>
+    </tr>
+    <tr>
+        <td>Accomplishments:</td>
+        <td>{{ entry.accomplishments }}</td>
+    </tr>
+    <tr>
+        <td>Hours:</td>
+        <td>{{ entry.hours }}</td>
+    </tr>
+    <tr>
+        <td>Time:</td>
+        <td>{{ entry.work_date }}</td>
+</table>
+{% endblock %}

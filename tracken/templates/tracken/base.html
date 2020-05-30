@@ -1,0 +1,53 @@
+{% load nav_active %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %} {% endblock %} | Tracken</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'tracken/style.css' %}">
+        <link rel="stylesheet" href="{% static 'tracken/fontawesome-free-5.13.0-web/css/fontawesome.min.css' %}">
+        <script type="text/javascript">
+            function myFunction() {
+                var x = document.getElementById("myTopnav");
+                if (x.className === "topnav") {
+                    x.className += " responsive";
+                } else {
+                    x.className = "topnav";
+                }
+            }
+        </script>
+        {% block head %}
+        {% endblock %}
+    </head>
+    <body>
+        <header>
+            <nav class="topnav" id="myTopnav">
+                <a href="{% url 'tracken:home' %}">Home</a>
+                {% if not user.is_anonymous %}
+                    <a href="{% url 'tracken:progress' %}">Your progress</a>
+                {% endif %}
+                <a href="{% url 'tracken:about' %}">About</a>
+                {% if user.is_anonymous %}
+                <a href="{% url 'tracken:signup' %}" class="right">Make an account</a>
+                <a href="{% url 'tracken:login' %}" class="right">Log In</a>
+                {% else %}
+                <a href="{% url 'tracken:logout' %}" class="right">Logout of {{ user.username }}</a>
+                {% endif %}
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+                </a>
+            </nav>
+            <div class="header">
+                {% block header %}
+                <h2>Tracken</h2>
+                {% endblock %}
+            </div>
+        </header>
+        <div class="content">
+            {% block content %}
+            We have a bruh moment, nobody should be seeing this.
+            {% endblock %}
+        </div>
+    </body>
+</html>

@@ -1,0 +1,26 @@
+{% extends 'tracken/base.html' %}
+
+{% block title %}Progress{% endblock %}
+{% block header %}
+<h2>Your IDS Progress</h2>
+{% endblock %}
+
+{% block content %}
+<p>
+    <a href="{% url 'tracken:new-entry' year=year %}">Log a new entry</a>
+</p>
+{% if entryList %}
+<ul>
+    {% for entry in entryList %}
+    <li>
+        <a href="{% url 'tracken:entry' pk=entry.id %}">
+            {{ entry.goal }}
+            <span class="right">{{ entry.work_date }}</span>
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>You haven't logged any IDS work yet. Get cracking!</p>
+{% endif %}
+{% endblock %}
