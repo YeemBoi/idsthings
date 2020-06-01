@@ -7,5 +7,91 @@
 {% endblock %}
 
 {% block content %}
-<h3>Tracken is a simple IDS tracking system.</h3>
+<p>
+    <b>Tracken is a simple IDS tracking system designed to demonstrate relational databases.</b>
+</p>
+<div class="smallish separated">
+    <p class="spaced">
+        <b>Tables</b> are the most important elements of nearly any database.
+        Let's take a look at an example one used for IDS.
+    </p>
+    <br>
+    <code class="smallish">
+        <table class="bordered">
+            <thead>
+                <tr>
+                    <th>Primary Key</th>
+                    <th>Time work happened</th>
+                    <th>Time spent</th>
+                    <th>Goals</th>
+                    <th>Accomplishments</th>
+                    <th>Project Foreign Key</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>574</td>
+                    <td>Thursday 4:30 pm</td>
+                    <td>2 hours</td>
+                    <td><q>Get stuff done</q></td>
+                    <td><q>Got stuff done</q></td>
+                    <td>38</td>
+                </tr>
+                <tr>
+                    <td>575</td>
+                    <td>Friday 8:00 pm</td>
+                    <td>2 hours, 30 mins</td>
+                    <td><q>Do something</q></td>
+                    <td><q>Something</q></td>
+                    <td>25</td>
+                </tr>
+                <tr>
+                    <td>576</td>
+                    <td>Saturday 11:00 am</td>
+                    <td>45 mins</td>
+                    <td><q>Get stuff done</q></td>
+                    <td><q>Got stuff done</q></td>
+                    <td>62</td>
+                </tr>
+                <tr>
+                    <td>577</td>
+                    <td>Saturday 1:00 pm</td>
+                    <td>1 hour, 50 mins</td>
+                    <td><q>Get stuff done</q></td>
+                    <td><q>Got stuff done</q></td>
+                    <td>47</td>
+                </tr>
+            </tbody>
+        </table>
+        </code>
+    <p>
+        As you can see, the rows in this table represent entrires in a logbook.
+        However, there are still some columns in this table that don't seem to be relevant.
+        Specifically, the <q><b>Primary Key</b></q> and <q><b>Project Foreign Key</b></q> rows.
+    </p>
+    <p>
+        The first row that you see in the table isn't an entry, but rather a definition of what the columns are.
+        These are called attributes.
+        All rows must conform provide these attributes, nothing more and nothing less -
+        although null and blank values can be accepted, but that depends on the configuration.
+    </p>
+    <p>
+        These are more or less specific to a type of database managemant system called RDBMS,
+        with the <q>R</q> standing for relational.
+        They're named this way because the tables are connected with a relational model.
+    </p>
+    <p>
+        The primary key is used as a unique identifier for each row in the database -
+        or tuple, in RDBMS terms. It's almost always a number.
+        However, you'll almost never see the primary key from an actual website or application.
+        The last <q>foreign key</q> column, though,
+        refers to a <b>different table's</b> foreign key.
+    </p>
+    <p class="smallish">There are many different types of databases. These can include:</p>
+    <ul>
+        <li>
+            <b>Hierarchical databases</b>, which are basically a tree of tables.
+        </li>
+    </ul>
+</div>
 {% endblock %}

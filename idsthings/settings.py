@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'vote',
+    'jquery',
+    'fontawesome_5'
 ]
 
 MIDDLEWARE = [

@@ -6,7 +6,12 @@
 {% block content %}
 <form method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
+    {% for field in form %}
+    <div>
+        <p class="labelPadding">{{ field.label_tag }}</p>
+        <p class="fieldPadding">{{ field }}</p>
+    </div>
+    {% endfor %}
     <div>
         <button type="submit">Log entry!</button>
     </div>

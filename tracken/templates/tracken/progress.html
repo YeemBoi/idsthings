@@ -7,11 +7,22 @@
 
 {% block content %}
 <p>
-    <a href="{% url 'tracken:new-entry' year=year %}">Log a new entry</a>
+    <h3>
+        <a href="{% url 'tracken:new-entry' year=year %}">
+            <button>Log a new entry</button>
+        </a>
+    </h3>
 </p>
-{% if entryList %}
+<div class="hourStatus">
+    <p>{{ hours_spent }} out of {{ hours_goal }} hours logged</p>
+    <div>
+        <a href="{% url 'tracken:edit-goal' pk=year %}"><button>Edit goal</button></a>
+    </div>
+</div>
+
+{% if entry_list %}
 <ul>
-    {% for entry in entryList %}
+    {% for entry in entry_list %}
     <li>
         <a href="{% url 'tracken:entry' pk=entry.id %}">
             {{ entry.goal }}

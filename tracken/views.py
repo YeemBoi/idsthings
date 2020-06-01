@@ -6,8 +6,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse
 from django.views import generic
+from django.db.models import Sum, Count
 
 from .models import User, Year, Entry, Comment
+import datetime
 
 # Create your views here.
 
@@ -25,8 +27,10 @@ def signup(request):
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
+            year = Year(student=user, year=datetime.datetime.today().year)
+            year.save()
             login(request, user)
-            return redirect('tracken:index')
+            return redirect('tracken:home')
     else:
         form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})
@@ -35,16 +39,23 @@ def signup(request):
 @login_required(redirect_field_name='tracken:progress')
 def progressTracker(request):
     year = get_object_or_404(Year, student=get_user(request))
+    entryList = year.entry_set.order_by('work_date')
+    if entryList.count():
+        hours = entryList.aggregate(Sum('time_spent'))['time_spent__sum'].total_seconds() / 3600
+    else:
+        hours = 0
     context = {
-        'entryList': year.entry_set.order_by('work_date'),
+        'entry_list': entryList,
         'year': year.id,
+        'hours_spent': hours,
+        'hours_goal': year.hours_goal,
     }
     return render(request, 'tracken/progress.html', context)
 
 class NewEntryView(generic.CreateView, LoginRequiredMixin):
     model = Entry
     template_name = 'tracken/new-entry.html'
-    fields = ['hours', 'goal', 'accomplishments']
+    fields = ['time_spent', 'goal', 'accomplishments']
     def form_valid(self, form):
         year = get_object_or_404(Year, pk=self.kwargs['year'])
         form.instance.year = year
@@ -53,3 +64,8 @@ class NewEntryView(generic.CreateView, LoginRequiredMixin):
 class EntryView(generic.DetailView, LoginRequiredMixin):
     model = Entry
     template_name = 'tracken/entry.html'
+
+class EditGoalView(generic.UpdateView, LoginRequiredMixin):
+    model = Year
+    template_name = 'tracken/edit-goal.html'
+    fields = ['hours_goal']

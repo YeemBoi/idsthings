@@ -9,6 +9,7 @@ import datetime
 class Year (models.Model):
     year = models.PositiveIntegerField()
     student = models.ForeignKey(User, on_delete=models.CASCADE)
+    hours_goal = models.PositiveSmallIntegerField(verbose_name='Goal for hours to accomplish', default=120)
     def __str__(self):
         return self.student.username + ' ' + str(self.year)
     
@@ -16,12 +17,12 @@ class Year (models.Model):
         return reverse('tracken:progress')
 
 class Entry (models.Model):
-    work_date = models.DateTimeField('time work happened', auto_now_add=True)
+    work_date = models.DateTimeField('Time work happened', auto_now_add=True)
     #updated_date = models.DateTimeField(auto_now=True)
-    hours = models.PositiveIntegerField(default=1)
+    time_spent = models.DurationField('Time spent on IDS', default=datetime.timedelta(hours=1))
     year = models.ForeignKey(Year, on_delete=models.CASCADE)
-    goal = models.TextField(null=True, blank=True)
-    accomplishments = models.TextField(default="Something, anyways")
+    goal = models.TextField(verbose_name='Goals for work period', null=True, blank=True)
+    accomplishments = models.TextField(verbose_name='Work accomplished', default='Something, anyways')
 
     def get_absolute_url(self):
         return reverse('tracken:entry', kwargs={"pk": self.id})
@@ -31,4 +32,4 @@ class Entry (models.Model):
 
 class Comment (VoteModel, models.Model):
     entry = models.ForeignKey(Entry, on_delete=models.CASCADE)
-    text = models.TextField(max_length=50000)
+    text = models.TextField(verbose_name='Thoughts on entry', max_length=50000)

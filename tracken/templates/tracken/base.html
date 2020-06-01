@@ -1,12 +1,14 @@
 {% load nav_active %}
 {% load static %}
+{% load fontawesome_5 %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <title>{% block title %} {% endblock %} | Tracken</title>
+        <link rel="shortcut icon" type="image/x-icon" href="{%  static 'tracken/favicon.ico' %}">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="{% static 'tracken/style.css' %}">
-        <link rel="stylesheet" href="{% static 'tracken/fontawesome-free-5.13.0-web/css/fontawesome.min.css' %}">
+        {% fontawesome_5_static %}
         <script type="text/javascript">
             function myFunction() {
                 var x = document.getElementById("myTopnav");

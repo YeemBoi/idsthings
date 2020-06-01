@@ -17,6 +17,14 @@ body {
     font-size: 25px;
 }
 
+b {
+    font-weight: 700;
+}
+
+.spaced {
+    margin: 10px 0px;
+}
+
 .topnav {
     top: 0;
     overflow: hidden;
@@ -136,7 +144,7 @@ button {
     color: inherit;
     border-radius: 30px;
     background-color: #2F343F;
-    transition: background-color 0.5s;
+    transition: background-color 0.5s, color 0.5s, font-weight 0.5s, width 1s;
     border: none;
     padding: 20px;
 }
@@ -144,6 +152,7 @@ button {
 button:hover {
     background-color: #7b869d;
     color: white;
+    font-style: italic;
 }
 
 li {
@@ -155,17 +164,50 @@ li {
 li:first-child {
     border-top: 0;
 }
-table {
+
+.formTable {
+    margin-top: 50px;
     table-layout: fixed;
 }
-td {
+.formTable td {
     width: 40%;
     padding-top:20px;
     padding-bottom:20px;
     padding-right:20px;   
 }
-  
-td:first-child {
+.formTable td:first-child {
     padding-left: 20px;
     padding-right: 0;
+}
+
+.hourStatus {
+    text-align: right;
+}
+
+.smallish {
+    font-size: 17px;
+}
+
+.separated {
+    padding-top: 10px;
+    border-top: 1px solid #f5f2d0;
+}
+
+thead {
+    font-weight: 700;
+}
+
+table {
+    border-collapse: collapse;
+}
+.bordered table, .bordered th, .bordered td {
+    border: 1px solid #f5f2d0;
+    padding: 7px;
+}
+
+.labelPadding {
+    margin-bottom: 5px;
+}
+.fieldPadding {
+    margin-top: 0px;
 }

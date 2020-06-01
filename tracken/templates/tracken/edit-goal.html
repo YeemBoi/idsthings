@@ -1,0 +1,19 @@
+{% extends 'tracken/base.html' %}
+{% block title %}Edit Goal{% endblock %}
+{% block header %}
+<h2>Edit Goal</h2>
+{% endblock %}
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <div>
+        My goal is to complete
+        {{ form.hours_goal }}
+        hours of work.
+    </div>
+    <br>
+    <div>
+        <button type="submit">Update goal</button>
+    </div>
+</form>
+{% endblock %}
