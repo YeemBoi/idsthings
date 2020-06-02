@@ -63,7 +63,7 @@
                 </tr>
             </tbody>
         </table>
-        </code>
+    </code>
     <p>
         As you can see, the rows in this table represent entrires in a logbook.
         However, there are still some columns in this table that don't seem to be relevant.
@@ -72,7 +72,7 @@
     <p>
         The first row that you see in the table isn't an entry, but rather a definition of what the columns are.
         These are called attributes.
-        All rows must conform provide these attributes, nothing more and nothing less -
+        All rows must conform with these attributes, nothing more and nothing less -
         although null and blank values can be accepted, but that depends on the configuration.
     </p>
     <p>
@@ -80,14 +80,114 @@
         with the <q>R</q> standing for relational.
         They're named this way because the tables are connected with a relational model.
     </p>
+    <br>
     <p>
         The primary key is used as a unique identifier for each row in the database -
         or tuple, in RDBMS terms. It's almost always a number.
         However, you'll almost never see the primary key from an actual website or application.
         The last <q>foreign key</q> column, though,
-        refers to a <b>different table's</b> foreign key.
+        refers to a <b>different table's</b> primary key.
     </p>
-    <p class="smallish">There are many different types of databases. These can include:</p>
+    <p>
+        This is where the relations in RDBMSs begin.
+        Every foreign key in a column will be the primary key of another table.
+        This table table would be filled with IDS projects. Here's an example:
+    </p>
+    <br>
+    <code class="smallish">
+        <table class="bordered">
+            <thead>
+                <tr>
+                    <th>Primary Key</th>
+                    <th>Year</th>
+                    <th>Topic</th>
+                    <th>Hours goal</th>
+                    <th>Student Foreign Key</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>47</td>
+                    <td>2019</td>
+                    <td><q>Video games and violence</q></td>
+                    <td>120</td>
+                    <td>37</td>
+                </tr>
+                <tr>
+                    <td>48</td>
+                    <td>2019</td>
+                    <td><q>Ancient architecture</q></td>
+                    <td>160</td>
+                    <td>21</td>
+                </tr>
+                <tr>
+                    <td>49</td>
+                    <td>2019</td>
+                    <td><q>Triangles</q></td>
+                    <td>120</td>
+                    <td>34</td>
+                </tr>
+            </tbody>
+        </table>
+    </code>
+    <p>
+        This table has another foreign key to a table called students,
+        but I'm sure you can figure out what would be in that table.
+        Another thing that you might have noticed is that although there is a column
+        for the goal of hours, but there isn't a field for the amount of hours
+        because that would be a violation of <b>database normalization</b>.
+    </p>
+    <p>
+        Database normalization is a technique which organizes tables
+        to make them less redundant and unnecessarily dependent on
+        illogical data. These are divided into several rules called
+        <b>normal forms</b>.
+    </p>
+    <ul>
+        <li>
+            The first normal form requires that each cell contains only a single value,
+            and that each row/tuple needs to be unique.
+        </li>
+        <li>
+            The second normal form requires the first normal form to be followed,
+            adding a constraint that limits primary keys to one column.
+        </li>
+        <li>
+            The third normal form requires the second normal form, but also
+            requires an absence of <b>transitive functional dependencies</b>.
+            Transitive functional dependencies are when changing one non-key
+            column could cause a different non-key column to change.
+        </li>
+        <li>
+            There are many more normal forms,
+            but these three are by far the most important.
+        </li>
+    </ul>
+    <h2 class="spaced">SQL</h2>
+    <p>
+        You might be wondering how these databases are actually interacted with.
+        <b>Structured Query Language</b> is a language used for
+        managing the data in relational database. SQL is usually executed in single commands,
+        which can either:
+    </p>
+    <ul>
+        <b>
+            <li>create,</li>
+            <li>retrieve,</li>
+            <li>update,</li>
+            <li>or manage</li>
+        </b>
+    </ul>
+    <p>
+        data.
+    </p>
+    <p>
+        But this still doesn't answer the question of
+        how database data 
+    </p>
+    <p>
+        There are many different types of databases. These can include:
+    </p>
     <ul>
         <li>
             <b>Hierarchical databases</b>, which are basically a tree of tables.
